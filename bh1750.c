@@ -31,15 +31,8 @@ uint16_t BH1750_read_lux(void) {
 
     raw_lux = (msb << 8) | lsb;
 
-    /* 
-       Para el modo de alta resolucion (BH1750_CONT_HIGH_RES_MODE),
-       el valor real en Lux se obtiene dividiendo el valor crudo por 1.2.
-       Esto se puede hacer con punto flotante o con aritmética de enteros.
-       usaremos float por simplicidad y precisión.
-    */
     float actual_lux_float = (float)raw_lux / 1.2;
 
-    // Se retorna un uint16_t, así que se trunca a entero.
     return (uint16_t)actual_lux_float;
 }
 
